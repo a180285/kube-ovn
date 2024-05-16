@@ -51,9 +51,9 @@ REGISTRY="docker.io/kubeovn"
 VPC_NAT_IMAGE="vpc-nat-gateway"
 VERSION="v1.12.4-mc"
 IMAGE_PULL_POLICY="IfNotPresent"
-POD_CIDR="10.16.0.0/16"                # Do NOT overlap with NODE/SVC/JOIN CIDR
-POD_GATEWAY="10.16.0.1"
-SVC_CIDR="10.96.0.0/12"                     # Do NOT overlap with NODE/POD/JOIN CIDR
+POD_CIDR="10.19.0.0/16"                # Do NOT overlap with NODE/SVC/JOIN CIDR
+POD_GATEWAY="10.19.0.1"
+SVC_CIDR="10.20.0.0/16"                     # Do NOT overlap with NODE/POD/JOIN CIDR
 JOIN_CIDR="100.64.0.0/16"                   # Do NOT overlap with NODE/POD/SVC CIDR
 PINGER_EXTERNAL_ADDRESS="1.1.1.1"           # Pinger check external ip probe
 PINGER_EXTERNAL_DOMAIN="kube-ovn.io."         # Pinger check external domain probe
@@ -4768,7 +4768,7 @@ kubectl cp kube-system/"$(kubectl -n kube-system get pods -o wide | grep cni | a
 chmod +x /usr/local/bin/kubectl-ko
 # show pod status in kube-system namespace before diagnose
 kubectl get pod -n kube-system -o wide
-kubectl ko diagnose all
+#kubectl ko diagnose all
 
 echo "-------------------------------"
 echo "
